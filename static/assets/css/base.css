@@ -22,6 +22,10 @@ body{
   background-color: #1f2937;
 }
 
+@media screen and (max-width: 840px) {
+  
+}
+
 .nav__titlecontainer{
   grid-area: title;
   display: flex;
@@ -34,19 +38,22 @@ body{
 .nav__lstcont{
   grid-area: list;
   display: flex;
-  flex-direction: row;
-  /* justify-content: flex-end; */
-  align-content: center;
+  flex-wrap: wrap;
 }
 
-.nav__lstcont li{
-  list-style: none;
+.nav__lstcont--list{
   display: flex;
+  list-style: none;
+  justify-items: end;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.nav__lstcont--list li{
   margin-inline-end: 20px;
 }
 
 .nav__lstcont li a{
-  display: flex;
   font-size: 15px;
   text-decoration: none;
   color: #c2c5c9;
@@ -57,9 +64,15 @@ body{
 }
 
 .nav__btncont{
+  display: flex;
+  flex-wrap: wrap;
   grid-area: buttons;
-  justify-content: end;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn{
+  margin-inline-end: 3px;
 }
 
 /* styling footer */
@@ -67,7 +80,7 @@ body{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "cpy sm"
+  grid-template-areas: "cpy sm";
   height: 85px;
   width: 100%;
   background-color: #1f2937;
@@ -75,7 +88,7 @@ body{
 
 .footer__titlecontainer{
   grid-area: cpy;
-  /* display: flex; */
+  display: flex;
   color: #0d6efd;
   align-items: center;
   justify-items: start;
@@ -85,5 +98,12 @@ body{
 .footer__smcontainer{
   grid-area: sm;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
   color: #0d6efd;
+}
+
+.footer__smcontainer a svg{
+  margin-inline-end: 20px;
 }

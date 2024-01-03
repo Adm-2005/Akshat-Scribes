@@ -1,1 +1,52 @@
 @import 'base.css';
+
+.post-main{
+    background-color: #111827;
+}
+
+.post-main__postcont{
+    background-color: #334155;
+    border-radius: 8px;
+    text-align: left;
+    display: block;
+    margin-block: 40px;
+    margin-inline: 100px;
+    padding-bottom: 20px;
+    height: auto;
+    color: white;
+}
+
+.postcont--title{
+    color: inherit;
+    padding-top: 20px;
+    margin-inline-start: inherit;
+}
+
+.postcont--datetime{
+    color: inherit;
+    margin-inline-start: inherit;
+}
+
+.postcont--image{
+    margin-inline: 300px;
+    width: 700px;
+    height: 500px;
+}
+
+.comment-heading{
+    color: white;
+    text-align: center;    
+}
+
+.post-main__commentcont{
+    background-color: #334155;
+    border-radius: 8px;
+    text-align: left;
+    display: block;
+    margin-block: 40px;
+    margin-inline: 100px;
+    padding-bottom: 20px;
+    height: auto;
+    color: white;
+
+}

@@ -1,0 +1,69 @@
+@import 'base.css';
+
+.register_body{
+    background-color: #111827;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: center;
+    margin-left: 40%;
+    background-color: #334155;
+    border-radius: 8px;
+}
+
+.form__titlecont{
+    display: flex;
+    color: #0d6efd;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 60px 0px 60px;
+}
+
+.fw-normal{
+    text-align: center;
+    color: white;
+}
+
+.form-floating{
+    display: flex;
+    justify-content: center;
+    /* padding-inline-start: 60px; */
+    /* padding-bottom: 5px; */
+}
+
+.form-floating > label{
+    left: auto;
+    transform-origin: ;
+}
+
+.input{
+    padding-inline: 30px;
+}
+
+
+.form-check-label{
+    padding-inline: 30px;
+    color: white;
+}
+
+.btn{
+    align-self: center;
+}
+
+.py-2{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.text-body-secondary{
+    text-align: center;
+    padding-bottom: 10px;
+    color: white;
+}

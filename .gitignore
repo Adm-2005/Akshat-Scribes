@@ -1,0 +1,13 @@
+#ignoring replit config files
+.replit
+replit.nix
+
+#ignoring other not needed files
+pyproject.toml
+poetry.lock
+
+#ignoring virtual environment
+venv
+Lib
+Scripts
+__pycache__
