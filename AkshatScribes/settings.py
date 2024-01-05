@@ -21,6 +21,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
+CSRF_TRUSTED_ORIGINS = [
+    'https://04f2a38a-0bfd-4a4e-88be-afa6afbab600-00-393f0h3cluklb.pike.replit.dev'
+]
 
 # Application definition
 
@@ -127,4 +130,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

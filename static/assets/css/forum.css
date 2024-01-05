@@ -1,0 +1,47 @@
+@import 'base.css';
+
+.forum-main{
+  background-color: #111827;
+  display: grid;
+  grid-template-areas: "rooms messages";
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 1fr;
+}
+
+.sidebar{
+  grid-area: rooms;
+  height: 80vh;
+  color: white;
+  background-color: #1f2937;
+  overflow-y: auto;
+}
+
+.sidebar-heading{
+  color: white;
+  text-align: center;
+}
+
+.room-list{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: center;
+}
+
+.room-list li{
+  justify-content: center;
+}
+
+.room-list li a{
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+}
+
+.room-list li a:hover{
+  color: #0d6efd;
+}
+
+.forum-cont{
+  grid-area: messages;
+}

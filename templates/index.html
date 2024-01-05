@@ -10,7 +10,7 @@
     <p class="main__postcontainer--date">By <img style="border-radius: 50%; height: 20px; width: 20px; margin-inline: 5px;" src="{% static 'assets/img/prof-pic.jpg' %}">Akshat Mishra . {{post.datetime}}</p>
     <div class="contentcontainer">
       <p class="main__postcontainer--content">
-        {{post.content|truncatewords:50|safe}}
+        {{post.content|truncatewords:60|safe}}
       </p>
     </div>
     <div class="main__postcontainer--btncont">
