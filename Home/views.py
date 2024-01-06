@@ -52,25 +52,19 @@ def logout_user(request):
 
 
 def post(request, pk):
+    id = pk
     posts = Post.objects.get(id=pk)
-    # comments = post.comments.filter(active = True)
-    # new_comment = None
+
     if request.method == 'POST':
         comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
-            comment_form.instance.username = request.user
-            # new_comment = comment_form.save(commit = False)
-            # new_comment.post = posts
-            # new_comment.save()
-            return redirect('post')
+            comment_form.instance.post_id = pk
+            comment_form.instance.name = request.user
+            comment_form.save()
+            return redirect(f'/posts/{id}')
     else:
         comment_form = CommentForm()
         return render(request, 'post.html', {
-        'posts': posts,
-        'comment_form': comment_form,
-        # 'comments' : comments,
-        # 'new_comment' : new_comment,
-    })
-   
-
-    
+            'posts': posts,
+            'comment_form': comment_form,
+        })

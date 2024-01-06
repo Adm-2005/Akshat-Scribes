@@ -1,8 +1,21 @@
-<form method="post">
+<form  class="comment-form" method="post">
     {% csrf_token %}
 
-    <div class="post-main__commentcont">
-        {{ comment_form.as_p }}
+    <div>
+      {% for field in comment_form %}
+      <p>
+          {% if field.errors %}
+          <ul class="errorlist">
+              {% for error in field.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+          <div class="comment-form--field">
+              {{field}} 
+          </div>
+      </p>
+      {% endfor %}
     </div>
     
 
@@ -10,6 +23,6 @@
         <button class="btn btn-primary py-2" type="submit" fdprocessedid="b370s">Post</button>
     {% else %}
         <button disabled class="btn btn-primary py-2" type="submit" fdprocessedid="b370s">Post</button>
-        <p>Please sign in to post comment.</p>
+        <p style="color: white; display: flex; justify-content: center;">Please sign in to post comment.</p>
     {% endif %}
 </form>

@@ -22,7 +22,7 @@
   {% else %}
     {% for comment in posts.comments.all %}
       <div class="post-main__commentcont">
-        <h5 style="color: inherit; margin-inline-start: inherit; padding-top:10px;"><strong>{{ comment.username }}</strong></h5>
+        <h5 style="color: inherit; margin-inline-start: inherit; padding-top:10px;"><strong>{{ comment.name }}</strong></h5>
         <p class="postcont--datetime">{{comment.date}}</p>
         <p class="comment-body">{{ comment.body }}</p>
       </div>
