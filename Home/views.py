@@ -1,9 +1,8 @@
+from .models import Post, Comment
+from django.contrib import messages
+from .forms import RegisterForm, CommentForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-from .models import Post, Comment
-from .forms import RegisterForm, CommentForm
 
 
 def index(request):
@@ -54,18 +53,24 @@ def logout_user(request):
 
 def post(request, pk):
     posts = Post.objects.get(id=pk)
-    comment_form = CommentForm()
+    # comments = post.comments.filter(active = True)
+    # new_comment = None
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
-            clean_data = comment_form.cleaned_data
-            print(clean_data)
-            new_comment = comment_form.save(commit=False)
-            new_comment.post = Post.objects.get(pk=pk)
-            new_comment.save()
-        return redirect()
-
-    return render(request, 'post.html', {
+            comment_form.instance.username = request.user
+            # new_comment = comment_form.save(commit = False)
+            # new_comment.post = posts
+            # new_comment.save()
+            return redirect('post')
+    else:
+        comment_form = CommentForm()
+        return render(request, 'post.html', {
         'posts': posts,
-        'comment_form': comment_form
+        'comment_form': comment_form,
+        # 'comments' : comments,
+        # 'new_comment' : new_comment,
     })
+   
+
+    

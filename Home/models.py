@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
     
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -7,11 +8,15 @@ class Post(models.Model):
     datetime = models.DateTimeField(default=datetime.now())
     content = models.CharField(max_length=10000000)
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
-    comment_post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='comments')
-    comment = models.CharField(max_length = 500)
-    comment_dt = models.DateField(default = datetime.now, blank=True)
-    comment_active = models.BooleanField(default=True)
-
+    post = models.ForeignKey(Post, related_name = 'comments', on_delete = models.CASCADE)
+    username = models.ForeignKey(User, editable = False, on_delete=models.CASCADE)
+    body = models.TextField(blank=False)
+    date = models.DateTimeField(default=datetime.now())
     
+    def __str__(self):
+        return '%s - %s' % (self.post.title, self.name)

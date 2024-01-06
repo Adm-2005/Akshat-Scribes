@@ -19,7 +19,7 @@
 </head>
 <body class="register_body">
     <main class="form-signin">
-        <form action="{% url 'signup' %}" method=POST>
+        <form class="form-signin" action="{% url 'signup' %}" method=POST>
             {% csrf_token %}
             <div class="form__titlecont">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">

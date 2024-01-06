@@ -16,9 +16,21 @@
   <hr style="color: white;">
   <h3 class="comment-heading">Comments</h3>
   <hr style="color: white;">
-  <div class="post-main__commentcont">
-    {% include 'components/comment_form.html' %}
-  </div>
+
+  {% if not posts.comments.all %}  -->
+    <h3 class="comment-heading">No Comments Yet.</h3>
+  {% else %}
+    {% for comment in posts.comments.all %}
+      <div class="post-main__commentcont">
+        <h5 style="color: inherit; margin-inline-start: inherit; padding-top:10px;"><strong>{{ comment.username }}</strong></h5>
+        <p class="postcont--datetime">{{comment.date}}</p>
+        <p class="comment-body">{{ comment.body }}</p>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% include 'components/comment_form.html' %}
+  
 </main>
 
 {% endblock %}

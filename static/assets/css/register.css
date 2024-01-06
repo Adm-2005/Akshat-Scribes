@@ -10,13 +10,14 @@
 
 .form-signin{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   
 }
 
 form{
     width: 400px;
-    height: 70%;
+    height: 60%;
     justify-content: center;
     margin-inline: 30%;
     margin-block: 30%;

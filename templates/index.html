@@ -4,20 +4,26 @@
 {% block content %}
 
 <main class="main">
-  {% for post in posts reversed %}
-  <div class="main__postcontainer">
-    <h3 class="main__postcontainer--title">{{post.title}}</h3>
-    <p class="main__postcontainer--date">By <img style="border-radius: 50%; height: 20px; width: 20px; margin-inline: 5px;" src="{% static 'assets/img/prof-pic.jpg' %}">Akshat Mishra . {{post.datetime}}</p>
-    <div class="contentcontainer">
-      <p class="main__postcontainer--content">
-        {{post.content|truncatewords:60|safe}}
-      </p>
+    <br>
+    <br>
+    <br>
+    {% for post in posts reversed %}
+    <div>
+      <div class="main__postcontainer">
+        <h3 class="main__postcontainer--title">{{post.title}}</h3>
+        <p class="main__postcontainer--date">By <img style="border-radius: 50%; height: 20px; width: 20px; margin-inline: 5px;" src="{% static 'assets/img/prof-pic.jpg' %}">Akshat Mishra . {{post.datetime}}</p>
+        <div class="contentcontainer">
+          <p class="main__postcontainer--content">
+            {{post.content|truncatewords:60|safe}}
+          </p>
+        </div>
+        <div class="main__postcontainer--btncont">
+          <button class="btn btn-primary rounded-pill px-3" type="button"><a class="main__postcontainer--read" href="/posts/{{post.id}}">Read More</a></button>
+        </div>
+      </div>
     </div>
-    <div class="main__postcontainer--btncont">
-      <button class="btn btn-primary rounded-pill px-3" type="button"><a class="main__postcontainer--read" href="/posts/{{post.id}}">Read More</a></button>
-    </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
+   
 </main>
 
 {% endblock %}
