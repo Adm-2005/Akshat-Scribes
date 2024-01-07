@@ -10,16 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0x000001F511917D00'
 
-if SECRET_KEY is None:
-    print(
-        "Please setup a SECRET_KEY in the Secrets (Environment variables) tab. See README.md for more."
-    )
-    exit(1)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['akshatscribes.pythonanywhere.com']
 X_FRAME_OPTIONS = '*'
 CSRF_TRUSTED_ORIGINS = [
     'https://04f2a38a-0bfd-4a4e-88be-afa6afbab600-00-393f0h3cluklb.pike.replit.dev'
