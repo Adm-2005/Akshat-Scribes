@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['akshat-scribes.onrender.com']
 # X_FRAME_OPTIONS = '*'
 # CSRF_TRUSTED_ORIGINS = [
 #     'https://04f2a38a-0bfd-4a4e-88be-afa6afbab600-00-393f0h3cluklb.pike.replit.dev'
