@@ -20,10 +20,10 @@
     </div>
     {% else %}
     <div class="nav__btncont">
-      <a href="{% url 'signin' %}"><button class="btn btn-primary rounded-pill px-3" type="button">Sign In</button>
+      <a href="{% url 'signin' %}"><button class="btn btn-primary rounded-pill px-3"  id="nav-btn1"  type="button">Sign In</button>
       </a>
       <a href="{% url 'signup' %}">
-      <button class="btn btn-primary rounded-pill px-3" type="button">Sign Up</button>
+      <button class="btn btn-primary rounded-pill px-3" id="nav-btn2"  type="button">Sign Up</button>
       </a>
     </div>
     {% endif %}

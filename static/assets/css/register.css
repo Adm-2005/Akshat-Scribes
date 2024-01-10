@@ -8,10 +8,13 @@
     justify-content: center;
 }
 
+
 .form-signin{
   display: flex;
   width: 400px;
   background-color: #334155;
+  /* margin-inline: 30%; */
+  /* margin-block: 30%; */
   border-radius: 8px;
   flex-direction: column;
   justify-content: center;
@@ -93,7 +96,7 @@ form{
 
 /* mobile styling */
 @media (max-width: 840px){
-  form{
+  .form-signin{
       width: 400px;
       height: 700px;
       display: flex;
@@ -115,4 +118,36 @@ form{
     justify-content: center;
   }
 
+}
+
+@media(max-width: 449px){
+  .register_body{
+      background-color: #334155;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .form-signin{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: auto;
+      border-radius: 8px;
+      margin-inline: 30px;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      background-color: #334155;
+  }
+
+  .py-2{
+    margin-inline: 110px;
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
