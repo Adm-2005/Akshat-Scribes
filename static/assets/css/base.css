@@ -350,9 +350,10 @@ body::-webkit-scrollbar{
 .footer__smcontainer a svg{
   margin-inline-end: 20px;
 }
+}
 
 /* mobile styling for footer */
-@media(max-width: 840px){
+@media(width > 400px) and (width <= 840px){
   .footer{
     /* position: sticky;
     bottom: 0; */
@@ -420,11 +421,11 @@ body::-webkit-scrollbar{
 }
 
 .copyright{
-  display: none;
+  display: block;
 }
 
 .footer-title{
-  /* border-right: 2px solid #c2c5c9;  */
+  display: none;
   padding-right:10px; 
 }
 

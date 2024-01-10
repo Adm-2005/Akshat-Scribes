@@ -7,7 +7,7 @@
   max-width: 100vw;
   height: 100vh;
   background-color: #111827;
-  justify-content: center;
+  /* justify-content: center; */
   overflow-y:auto;
 }
 
@@ -62,7 +62,7 @@
       width: 100vw;
       height: 100vh;
       background-color: #111827;
-      justify-content: center;
+      /* justify-content: center; */
       overflow-y: auto;
       align-content: center;
     }
@@ -121,7 +121,7 @@
     height: 100vh;
     overflow-y: auto;
     background-color: #111827;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   #main-breaks{
@@ -172,7 +172,7 @@
     height: 100vh;
     overflow-y: auto;
     background-color: #111827;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   #main-breaks{
