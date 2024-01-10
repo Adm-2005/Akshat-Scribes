@@ -8,16 +8,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0x000001F511917D00'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ['*']
-X_FRAME_OPTIONS = '*'
-CSRF_TRUSTED_ORIGINS = [
-    'https://04f2a38a-0bfd-4a4e-88be-afa6afbab600-00-393f0h3cluklb.pike.replit.dev'
-]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+# X_FRAME_OPTIONS = '*'
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://04f2a38a-0bfd-4a4e-88be-afa6afbab600-00-393f0h3cluklb.pike.replit.dev'
+# ]
 
 # Application definition
 
@@ -75,6 +75,7 @@ DATABASES = {
 }
 
 # Password validation
+
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
