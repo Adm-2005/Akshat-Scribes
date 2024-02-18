@@ -1,13 +1,14 @@
-#ignoring replit config files
+venv/
+
+.upm/
+
+poetry.lock
+pyproject.toml
 .replit
 replit.nix
 
-#ignoring other not needed files
-pyproject.toml
-poetry.lock
+Home/__pycache__/
+Home/migrations/
 
-#ignoring virtual environment
-venv
-Lib
-Scripts
-__pycache__
+AkshatScribes/__pycache__/
+AkshatScribes/pyvenv.cfg
