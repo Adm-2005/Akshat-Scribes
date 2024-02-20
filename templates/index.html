@@ -1,32 +1,39 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-
-<main class="main">
-  <br id="main-breaks">
-  <br id="main-breaks">
-  <!-- <br id="main-breaks">
-  <br id="main-breaks">  -->
-    {% for post in posts reversed %}
-    <div>
-      <div class="main__postcontainer">
-        <h3 class="main__postcontainer--title">{{post.title}}</h3>
-        <p class="main__postcontainer--date">By <img style="border-radius: 50%; height: 20px; width: 20px; margin-inline: 5px;" src="{% static 'assets/img/prof-pic.jpg' %}">Akshat Mishra . {{post.datetime}}</p>
-        <div class="contentcontainer">
-          <p class="main__postcontainer--content">
-            {{post.content|truncatewords:60|safe}}
-          </p>
-        </div>
-        <div class="main__postcontainer--btncont">
-          <button class="btn btn-primary rounded-pill px-3" type="button"><a class="main__postcontainer--read" href="/posts/{{post.id}}">Read More</a></button>
-        </div>
+<section id="hero" class=" my-auto bg-secondary">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-5 text-center text-md-start">
+        <h1>
+          <div class="display-2 fst-italic text-dark" style="font-family:Pacifico, sans-serif;">Akshat Scribes</div>
+        </h1>  
+        <p class="lead my-4 fst-italic text-light">"Writing is not just a skill, it's the voyage of understanding"</p>
+        <a href="" class="btn btn-outline-dark btn-large d-md-none">Sign In</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <img class="img-fluid ml-md-5" src="{% static 'assets/img/hero.png' %}"></img>
       </div>
     </div>
-    {% endfor %}
-    <br>
-   
-</main>
+  </div>
+</section>
 
+<section id="blogs" class="mx-2">
+  {% for post in posts reversed %}
+  <div>
+    <div class="container my-5 p-3 rounded border">
+      <h3 class="text-dark">{{post.title}}</h3>
+      <p class="">By <img style="border-radius: 50%; height: 20px; width: 20px; margin-inline: 5px;" src="{% static 'assets/img/prof-pic.jpg' %}">Akshat Mishra . {{post.datetime}}</p>
+      <div class="">
+        <p class="">
+          {{post.content|truncatewords:60|safe}}
+        </p>
+      </div>
+      <div class="">
+        <button class="btn btn-secondary rounded px-3" type="button"><a class="text-light text-decoration-none" href="/posts/{{post.id}}">Read More</a></button>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
 {% endblock %}
-  

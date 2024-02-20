@@ -6,25 +6,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Akshat Scribes is a blog website that hosts blogs written by Akshat Mishra">
+  <meta name="author" content="Akshat Mishra">
+  <meta name="keywords" content="Akshat Scribes, Blogs, TechBlogs, Software Development, IT industry, Akshat Mishra">
+
+  <link rel="icon" type="image/svg+xml" href= "{% static 'assets/img/quill.svg' %}" >
 
   <!-- loading bootstrap, css, js -->
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
+  {% load bootstrap_icons %}
   {% load crispy_forms_tags %}
 
   <!-- links -->
-  <link rel="stylesheet" href="{% static 'assets/css/base.css'%}"/>
-  <link rel="stylesheet" href="{% static 'assets/css/index.css'%}"/>
-  <link rel="stylesheet" href="{% static 'assets/css/post.css' %}"/>
-  <link rel="stylesheet" href="{% static 'assets/css/login.css'%}"/>
-  <link rel="stylesheet" href="{% static 'assets/css/register.css'%}"/>
-  <link rel="stylesheet" href="{% static 'assets/css/forum.css'%}"/>
+
+  <!-- stylesheet -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap')
+  </style>
   
-  <title>Akshat Mishra's Blog</title>
+  <title>Akshat Scribes</title>
 </head>
   
-<body>
+<body class="d-flex flex-column min-vh-100">
   {% include 'components/navbar.html' %}
 
   {% block content %}
@@ -34,6 +39,5 @@
   {% include 'components/footer.html' %}
 </body>
  
-<script src="{% static 'assets/js/base.js' %}"></script>
 
 </html>

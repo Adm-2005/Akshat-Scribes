@@ -1,70 +1,58 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- loading bootstrap, css, js -->
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+{% block content %}
 
-    <!-- links -->
-    
-    <link rel="stylesheet" href="{% static 'assets/css/base.css'%}"/>
-    <link rel="stylesheet" href="{% static 'assets/css/login.css' %}"/>
+{% if messages %}
+  <ul class="messages" style="list-style: none; color: white;">
+    {% for message in messages %}
+      <div style="margin:10px;" class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </ul>
+{% endif %}
 
-    <title>Sign In</title>
-</head>
-<body class="login_body">
-    {% if messages %}
-    <ul class="messages" style="list-style: none; color: white;">
-        {% for message in messages %}
-        <div style="margin:10px;" class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{message}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    <main class="form-signin">
-        <form method=POST>
-            {% csrf_token %}
-            <div class="form__titlecont">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
-                </svg>
-                <h3>Akshat Scribes</h3>
-            </div>
-            
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-            <div class="form-floating">
-                <input type="text" class="form-control" name="username" placeholder="John Doe" fdprocessedid="vucot8">
-                <label for="floatingInput">Username</label>
-            </div>
-      
-            <div class="form-floating">
-                <input type="password" class="form-control" name="password" placeholder="Password" fdprocessedid="1vts0m">
-                <label for="floatingPassword">
-                Password
-                </label>
-            </div>
-      
-            <div class="form-check text-start my-3">
-                
-                <label class="form-check-label" for="flexCheckDefault">
-                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                Remember me
-                </label>
-            </div>
-            <p class="text-body-secondary"><a href="signup" style="text-decoration:none;">New? Create Account</a></p>
-            <button class="btn btn-primary py-2" type="submit" fdprocessedid="b370s">Sign in</button>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; Copyright   <a href="https://akshatme.pythonanywhere.com" target="_blank" style="text-decoration: none;">Akshat Mishra
-            </a>
-            </p>
+<section id='login' class="my-auto mx-3">
+  <div class="container my-5 rounded p-3 border border-secondary">
+    <div class="text-center text-secondary">
+      <h2>Sign In</h2>
+      <p class="lead text-secondary">Please sign in to have more access.</p>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-lg-6">
+        <form action="/signin" method="POST" class="">
+          {% csrf_token %}
+          <label for="username" class="form-label text-secondary">Username:</label>
+          <input type="text" class="form-control" name="username" placeholder="e.g. xyz">
+          
+          <!-- <label for="email" class="form-label text-secondary">Email Address:</label>
+          <input type="email" class="form-control" id="email" placeholder="e.g. xyz@example.com"> -->
+          
+          <label for="password" class="form-label text-secondary">Password:</label>
+          <input type="password" name="password" class="form-control" placeholder="Enter your password">
+          
+          <div class="form-check mt-2">
+            <input type="checkbox" id="remember" class="form-check-input">
+            <label for="remember" class="form-check-label text-secondary">Remember me</label>
+          </div>
+          
+          <div class="my-3">
+            <a href="{% url 'signup' %}" class="text-decoration-none">New? Create an Account</a>
+          </div>
+          
+          <div class="my-4 text-center">
+            <button type="submit" class="btn btn-md btn-secondary">Sign in</button>
+          </div>
+          
+          <div class="text-start">
+            <p class="text-secondary">&copy; Copyright <a class="text-decoration-none" href="https://akshatmishra.onrender.com">Akshat Mishra</a> 2024</p>
+          </div>
         </form>
-      </main>
-</body>
-</html>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

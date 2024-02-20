@@ -2,36 +2,33 @@
 {% load static %}
 
 {% block content %}
-
-<main class="post-main">
-  <div class="post-main__postcont">
-    <h3 class="postcont--title">{{posts.title}}</h3>
-    <p class="postcont--datetime">By <img style="border-radius: 50%; height: 20px; width: 20px; margin-inline: 5px;" src="{% static 'assets/img/prof-pic.jpg' %}">Akshat Mishra . {{posts.datetime}}
+<section class="mx-3 my-5" id="post">
+  <div class="container rounded border p-3 mb-5">
+    <h3 class="">{{posts.title}}</h3>
+    <p class="">By <img style="border-radius: 50%; height: 20px; width: 20px; margin-inline: 5px;" src="{% static 'assets/img/prof-pic.jpg' %}">Akshat Mishra . {{posts.datetime}}
     </p>
     {% if posts.image %}
-    <img class="postcont--image" src="{{ posts.image.url }}">
+    <img class="img-fluid rounded mx-auto" width='480px' height='480px' src="{{ posts.image.url }}">
     {% endif %}
     <p>{{posts.content|safe}}</p>
   </div>
-  <hr style="color: white;">
-  <h3 class="comment-heading">Comments</h3>
-  <hr style="color: white;">
+  <hr style="">
+  <h3 class="text-center text-secondary">Comments</h3>
+  <hr>
 
-  {% if not posts.comments.all %}  -->
-    <h3 class="comment-heading">No Comments Yet.</h3>
+  {% if not posts.comments.all %}
+    <h3 class="text-center text-secondary my-5">No Comments Yet.</h3>
   {% else %}
     {% for comment in posts.comments.all %}
-      <div class="post-main__commentcont">
+      <div class="container rounded border my-3">
         <h5 style="color: inherit; margin-inline-start: inherit; padding-top:10px;"><strong>{{ comment.name }}</strong></h5>
-        <p class="postcont--datetime">{{comment.date}}</p>
-        <p class="comment-body">{{ comment.body }}</p>
+        <p class="">{{comment.date}}</p>
+        <p class="">{{ comment.body }}</p>
       </div>
     {% endfor %}
   {% endif %}
 
   {% include 'components/comment_form.html' %}
-  
-</main>
 
-{% endblock %}
-
+</section>
+  {% endblock %}

@@ -27,31 +27,8 @@ class RegisterForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1',
                   'password2')
 
-    def __init__(self, *args, **kwargs):
-        super(RegisterForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            'placeholder': 'Username',
-            'size': 20
-        })
-        self.fields['password1'].widget.attrs.update({
-            'placeholder': 'Password',
-            'size': 20
-        })
-        self.fields['password2'].widget.attrs.update({
-            'placeholder': 'Confirm Password',
-            'size': 20
-        })
-
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body', )
-
-        widgets = {
-            'body':
-            forms.Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Write your comment'
-            }),
-        }

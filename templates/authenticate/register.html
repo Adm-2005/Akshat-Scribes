@@ -1,55 +1,61 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- loading bootstrap, css, js -->
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+{% block content %}
 
-    <!-- links -->
-    
-    <link rel="stylesheet" href="{% static 'assets/css/base.css'%}"/>
-    <link rel="stylesheet" href="{% static 'assets/css/register.css'%}"/>
+{% if messages %}
+  <ul class="messages" style="list-style: none; color: white;">
+    {% for message in messages %}
+      <div style="margin:10px;" class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </ul>
+{% endif %}
 
-    <title>Sign Up</title>
-</head>
-<body class="register_body">
-    <main class="register-main">
-        <form class="form-signin" action="{% url 'signup' %}" method=POST>
-            {% csrf_token %}
-            <div class="form__titlecont">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
-                </svg>
-                <h3>Akshat Scribes</h3>
-            </div>
-            
-            <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
-            
-            {% for field in register_form %}
-            <p>
-                {% if field.errors %}
-                <ul class="errorlist">
-                    {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <div class="form-floating">
-                    {{field}} 
-                </div>
-            </p>
-            {% endfor %}
-            <br>
-            <button class="btn btn-primary py-2" type="submit" fdprocessedid="b370s">Sign Up</button>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; Copyright   <a href="https://akshatme.pythonanywhere.com" target="_blank" style="text-decoration: none;">Akshat Mishra
-            </a>
-            </p>
+<section id='login' class="my-auto mx-3">
+  <div class="container my-5 rounded p-3 border border-secondary">
+    <div class="text-center text-secondary">
+      <h2>Sign Up</h2>
+      <p class="lead text-secondary">Please sign up and be known.</p>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-lg-6">
+        <form action="/signup" method="POST" class="">
+          {% csrf_token %}
+          <label for="username" class="form-label text-secondary">Username:</label>
+          <input type="text" class="form-control" name="username" placeholder="e.g. johndoe">
+          
+          <label for="first_name" class="form-label text-secondary">First Name:</label>
+          <input type="text" class="form-control" name="first_name" placeholder="e.g. John">
+          
+          <label for="last_name" class="form-label text-secondary">Last Name:</label>
+          <input type="text" class="form-control" name="last_name" placeholder="e.g. Doe">
+          
+          <label for="email" class="form-label text-secondary">Email Address:</label>
+          <input type="email" class="form-control" name="email" placeholder="e.g. johndoe@example.com">
+          
+          <label for="password1" class="form-label text-secondary">Password:</label>
+          <input type="password" name="password1" class="form-control" placeholder="Enter your password">
+
+          <label for="password2" class="form-label text-secondary">Confirm Password:</label>
+          <input type="password" name="password2" class="form-control" placeholder="Confirm your password">
+          
+          <div class="my-3">
+            <a href="{% url 'signin' %}" class="text-decoration-none">Already an user? Sign in</a>
+          </div>
+          
+          <div class="my-4 text-center">
+            <button type="submit" class="btn btn-secondary">Sign up</button>
+          </div>
+          <div class="text-start">
+            <p class="text-secondary">&copy; Copyright <a class="text-decoration-none" href="https://akshatmishra.onrender.com">Akshat Mishra</a></p>
+          </div>
         </form>
-      </main>
-</body>
-</html>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 from .models import Post, Comment
 from django.contrib import messages
-from .forms import RegisterForm, CommentForm
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -12,35 +12,43 @@ def index(request):
 
 def register_user(request):
     if request.method == "POST":
-        register_form = RegisterForm(request.POST)
-        if register_form.is_valid():
-            register_form.save()
-            username = register_form.cleaned_data['username']
-            password = register_form.cleaned_data['password1']
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            messages.success(request, ("Signed Up successfully."))
-            return redirect('index')
+        # register_form = RegisterForm(request.POST or None)
+        # if register_form.is_valid():
+        username = request.POST.get('username')
+        firstname = request.POST.get('first_name')
+        lastname = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password1')
+        confirm_password = request.POST.get('password2')
+        User.objects.create(username=username,
+                            first_name=firstname,
+                            last_name=lastname,
+                            email=email,
+                            password=password)
+        user = authenticate(username=username, password=password)
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        messages.success(request, ("Signed Up successfully."))
+        return redirect('/')
 
     else:
-        register_form = RegisterForm()
-        return render(request, 'authenticate/register.html',
-                      {'register_form': register_form})
+        # register_form = RegisterForm()
+        return render(request, 'authenticate/register.html')
 
 
 def login_user(request):
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password1')
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
-            messages.success(request, ("Successfully Signed In."))
-            return redirect('index')
+            # messages.success(request, ("Successfully Signed In."))
+            return redirect('/')
         else:
             messages.error(request, ("Sign In unsuccessful. Try Again."))
-            return redirect('signin')
+            return redirect('/signin')
 
     else:
         return render(request, 'authenticate/login.html', {})
@@ -56,15 +64,13 @@ def post(request, pk):
     posts = Post.objects.get(id=pk)
 
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST, request.FILES)
-        if comment_form.is_valid():
-            comment_form.instance.post_id = pk
-            comment_form.instance.name = request.user
-            comment_form.save()
-            return redirect(f'/posts/{id}')
+        post = Post.objects.get(id=pk)
+        name = request.user
+        body = request.POST.get('body')
+        Comment.objects.create(post=post, name=name, body=body)
+
+        return redirect(f'/posts/{id}')
     else:
-        comment_form = CommentForm()
         return render(request, 'post.html', {
             'posts': posts,
-            'comment_form': comment_form,
         })
