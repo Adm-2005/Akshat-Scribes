@@ -1,6 +1,6 @@
 asgiref==3.7.2
 backports.entry-points-selectable==1.1.1
-backports.zoneinfo==0.2.1
+backports.zoneinfo==0.2.1;python_version<"3.9" #add ;python_version<"3.9" to avoid zoneinfo error in build
 beautifulsoup4==4.12.2
 Brotli==1.1.0
 CacheControl==0.12.10
