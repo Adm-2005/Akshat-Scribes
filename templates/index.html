@@ -9,7 +9,11 @@
           <div class="display-2 fst-italic text-dark" style="font-family:Pacifico, sans-serif;">Akshat Scribes</div>
         </h1>  
         <p class="lead my-4 fst-italic text-light">"Writing is not just a skill, it's the voyage of understanding"</p>
-        <a href="" class="btn btn-outline-dark btn-large d-md-none">Sign In</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'signout' %}" class="btn btn-outline-dark btn-large d-md-none">Sign Out</a>
+        {% else %}
+        <a href="{% url 'signin' %}" class="btn btn-outline-dark btn-large d-md-none">Sign In</a>
+        {% endif %}
       </div>
       <div class="col-md-6 text-center">
         <img class="img-fluid ml-md-5" src="{% static 'assets/img/hero.png' %}"></img>
